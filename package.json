@@ -11,7 +11,14 @@
     "pet"
   ],
   "node-red": {
-    "nodes": {}
+    "nodes": {
+      "tractive-config": "nodes/tractive-config/tractive-config.js",
+      "tractive-location": "nodes/tractive-location/tractive-location.js",
+      "tractive-tracker": "nodes/tractive-tracker/tractive-tracker.js",
+      "tractive-history": "nodes/tractive-history/tractive-history.js",
+      "tractive-pets": "nodes/tractive-pets/tractive-pets.js",
+      "tractive-control": "nodes/tractive-control/tractive-control.js"
+    }
   },
   "author": "Edouard",
   "license": "MIT",

@@ -1,0 +1,62 @@
+<script type="text/javascript">
+    RED.nodes.registerType('tractive-pets', {
+        category: 'Tractive',
+        color: '#4A90D9',
+        defaults: {
+            name: { value: '' },
+            config: { value: '', type: 'tractive-config', required: true },
+            mode: { value: 'all' },
+            petID: { value: '' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'font-awesome/fa-paw',
+        label: function () { return this.name || 'tractive-pets'; },
+        paletteLabel: 'pets',
+        oneditprepare: function () {
+            $('#node-input-mode').on('change', function () {
+                if ($(this).val() === 'single') {
+                    $('#row-petID').show();
+                } else {
+                    $('#row-petID').hide();
+                }
+            }).trigger('change');
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="tractive-pets">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="tractive-pets">
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> Account</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-list"></i> Mode</label>
+        <select id="node-input-mode">
+            <option value="all">All pets</option>
+            <option value="single">Single pet</option>
+        </select>
+    </div>
+    <div class="form-row" id="row-petID">
+        <label for="node-input-petID"><i class="fa fa-paw"></i> Pet ID</label>
+        <input type="text" id="node-input-petID" placeholder="override via msg.petID">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="tractive-pets">
+    <p>Get all pets or a single pet from the Tractive account.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">petID <span class="property-type">string</span></dt>
+        <dd>Overrides the Pet ID set in the node config (single pet mode only).</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">array | object</span></dt>
+        <dd>All pets mode: array of pet objects.<br>Single pet mode: pet object with details and picture URLs.</dd>
+    </dl>
+</script>

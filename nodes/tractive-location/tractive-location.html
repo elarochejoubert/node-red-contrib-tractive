@@ -1,0 +1,45 @@
+<script type="text/javascript">
+    RED.nodes.registerType('tractive-location', {
+        category: 'Tractive',
+        color: '#4A90D9',
+        defaults: {
+            name: { value: '' },
+            config: { value: '', type: 'tractive-config', required: true },
+            trackerID: { value: '' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'font-awesome/fa-map-marker',
+        label: function () { return this.name || 'tractive-location'; },
+        paletteLabel: 'location'
+    });
+</script>
+
+<script type="text/html" data-template-name="tractive-location">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="tractive-location">
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> Account</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-trackerID"><i class="fa fa-crosshairs"></i> Tracker ID</label>
+        <input type="text" id="node-input-trackerID" placeholder="override via msg.trackerID">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="tractive-location">
+    <p>Returns the current GPS location of a Tractive tracker.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">trackerID <span class="property-type">string</span></dt>
+        <dd>Overrides the Tracker ID set in the node config.</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Location object with <code>latlong</code> array and <code>address</code> object.</dd>
+    </dl>
+</script>

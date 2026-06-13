@@ -1,0 +1,59 @@
+<script type="text/javascript">
+    RED.nodes.registerType('tractive-control', {
+        category: 'Tractive',
+        color: '#4A90D9',
+        defaults: {
+            name: { value: '' },
+            config: { value: '', type: 'tractive-config', required: true },
+            trackerID: { value: '' },
+            action: { value: 'liveOn' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'font-awesome/fa-gamepad',
+        label: function () { return this.name || this.action || 'tractive-control'; },
+        paletteLabel: 'control'
+    });
+</script>
+
+<script type="text/html" data-template-name="tractive-control">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="tractive-control">
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> Account</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row">
+        <label for="node-input-trackerID"><i class="fa fa-crosshairs"></i> Tracker ID</label>
+        <input type="text" id="node-input-trackerID" placeholder="override via msg.trackerID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-bolt"></i> Action</label>
+        <select id="node-input-action">
+            <option value="liveOn">Live tracking — On</option>
+            <option value="liveOff">Live tracking — Off</option>
+            <option value="LEDOn">LED — On</option>
+            <option value="LEDOff">LED — Off</option>
+            <option value="buzzerOn">Buzzer — On</option>
+            <option value="buzzerOff">Buzzer — Off</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="tractive-control">
+    <p>Send a command to a Tractive tracker.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">trackerID <span class="property-type">string</span></dt>
+        <dd>Overrides the Tracker ID set in the node config.</dd>
+        <dt class="optional">action <span class="property-type">string</span></dt>
+        <dd>Overrides the action: <code>liveOn</code>, <code>liveOff</code>, <code>LEDOn</code>, <code>LEDOff</code>, <code>buzzerOn</code>, <code>buzzerOff</code>.</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Command result object from the Tractive API.</dd>
+    </dl>
+</script>
