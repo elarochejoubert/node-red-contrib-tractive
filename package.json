@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-tractive",
+  "version": "0.1.0",
+  "description": "Node-RED palette for Tractive GPS tracker integration",
+  "main": "index.js",
+  "keywords": [
+    "node-red",
+    "tractive",
+    "GPS",
+    "tracker",
+    "pet"
+  ],
+  "node-red": {
+    "nodes": {}
+  },
+  "author": "Edouard",
+  "license": "MIT",
+  "dependencies": {
+    "tractive": "^1.2.1"
+  }
+}
